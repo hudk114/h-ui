@@ -6,49 +6,21 @@
             :class="['img-outter', -1 === image.imgId ? 'img-invisibility' : '']">
             <image-info :imgInfo="image">
                 <!-- TODO 恶心 -->
-                <el-checkbox v-if="contains('check', requiredItems)"
+                <!-- <el-checkbox v-if="contains('check', requiredItems)"
                     :class="['check', cSize? cSize: '']"
                     slot="image"
                     v-model="cModel"
                     ref="checkbox"
                     @change="emitCheck($event, index)"
                     :label="image.imgId">{{ '' }}
-                </el-checkbox>
-                <button class="cover"
-                    slot="image"
-                    v-if="contains('cover', requiredItems) && !image.isCover"
-                    @click="cover(image.imgId)">
-                </button>
-                <span class="cover-selected"
-                    slot="image"
-                    v-if="contains('cover', requiredItems) && image.isCover">
-                </span>
-                <span class="handle-button-group"
-                    slot="image">
-                    <button class="del group-button"
-                        v-if="contains('del', requiredItems)"
-                        @click="del(image.imgId)">
-                    </button>
-                    <button class="trans group-button"
-                        v-if="contains('trans', requiredItems)"
-                        @click="trans(image.imgId)">
-                    </button>
-                    <button class="right group-button"
-                        v-if="contains('direct', requiredItems) && totalCount !== (currentPage - 1) * pageSize + lineIndex * lineCount + index + 1"
-                        @click="direct(image.imgId, 'right')">
-                    </button>
-                    <button class="left group-button"
-                        v-if="contains('direct', requiredItems) && !(1 === currentPage && 0 === lineIndex && 0 === index)"
-                        @click="direct(image.imgId, 'left')">
-                    </button>
-                </span>
+                </el-checkbox> -->
             </image-info>
         </div>
     </div>
 </template>
 
 <style>
-    .line-outter .img-outter .check-small .el-checkbox__inner {
+    /*.line-outter .img-outter .check-small .el-checkbox__inner {
         width: 14px;
         height: 14px;
     }
@@ -56,7 +28,7 @@
         height: 6px;
         width: 3px;
         left: 4px;
-    }
+    }*/
 </style>
 
 <style scoped>
@@ -71,7 +43,7 @@
     .img-invisibility {
         visibility: hidden;
     }
-
+/*
     .check {
         position: absolute;
         left: 10px;
@@ -84,71 +56,7 @@
     .check-small {
         width: 14px;
         height: 14px;
-    }
-
-    .cover {
-        position: absolute;
-        width: 85px;
-        height: 24px;
-        top: 0;
-        right: 0;
-        background: url('./images/cover.png');
-        border-style: none;
-    }
-    .cover:hover {
-        background: url('./images/cover-hover.png');
-        cursor: pointer;
-    }
-
-    .cover-selected {
-        position: absolute;
-        width: 85px;
-        height: 24px;
-        top: 0;
-        right: 0;
-        background: url('./images/cover-selected.png');
-        border-style: none;
-    }
-
-    .handle-button-group {
-        position: absolute;
-        right: 0px;
-        bottom: 0px;
-    }
-    .group-button {
-        float: right;
-        margin-left: 1px;
-        width: 24px;
-        height: 24px;
-        border-style: none;
-    }
-    .group-button:hover {
-        cursor: pointer;
-    }
-    .del {
-        background: url('./images/dustbin.png') no-repeat center center;
-    }
-    .del:hover {
-        background: url('./images/dustbin-hover.png') no-repeat center center;
-    }
-    .trans {
-        background: url('./images/trans.png') no-repeat center center;
-    }
-    .trans:hover {
-        background: url('./images/trans-hover.png') no-repeat center center;
-    }
-    .right {
-        background: url('./images/right.png') no-repeat center center;
-    }
-    .right:hover {
-        background: url('./images/right-hover.png') no-repeat center center;
-    }
-    .left {
-        background: url('./images/left.png') no-repeat center center;
-    }
-    .left:hover {
-        background: url('./images/left-hover.png') no-repeat center center;
-    }
+    }*/
 </style>
 
 <script>
@@ -180,21 +88,9 @@
                 required: true,
                 type: Number,
             },
-            cover: {
-                type: Function,
-            },
-            del: {
-                type: Function,
-            },
-            trans: {
-                type: Function,
-            },
-            direct: {
-                type: Function,
-            },
-            checkSize: {
-                type: String,
-            },
+            // checkSize: {
+            //     type: String,
+            // },
             // how many images placed in one line
             lineCount: {
                 type: Number,

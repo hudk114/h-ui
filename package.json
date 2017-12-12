@@ -1,0 +1,27 @@
+{
+  "name": "h-ui",
+  "version": "0.0.1",
+  "description": "a series of enhanced vue components",
+  "main": "src/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hudk114/h-ui.git"
+  },
+  "keywords": [
+    "ui",
+    "vue",
+    "enhanced"
+  ],
+  "author": "hudk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hudk114/h-ui/issues"
+  },
+  "homepage": "https://github.com/hudk114/h-ui#readme"
+}
