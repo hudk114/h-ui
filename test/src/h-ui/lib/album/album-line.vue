@@ -20,43 +20,44 @@
 </template>
 
 <style>
-    /*.line-outter .img-outter .check-small .el-checkbox__inner {
-        width: 14px;
-        height: 14px;
-    }
-    .line-outter .img-outter .check-small .el-checkbox__inner::after {
-        height: 6px;
-        width: 3px;
-        left: 4px;
-    }*/
+/* .line-outter .img-outter .check-small .el-checkbox__inner {
+  width: 14px;
+  height: 14px;
+}
+.line-outter .img-outter .check-small .el-checkbox__inner::after {
+  height: 6px;
+  width: 3px;
+  left: 4px;
+} */
 </style>
 
 <style scoped>
-    .line-outter {
-        display: flex;
-        justify-content: space-between;
-    }
+.line-outter {
+  display: flex;
+  justify-content: space-between;
+}
 
-    .img-outter {
-        display: inline-block;
-    }
-    .img-invisibility {
-        visibility: hidden;
-    }
-/*
-    .check {
-        position: absolute;
-        left: 10px;
-        top: 10px;
-        width: 18px;
-        height: 18px;
-        white-space: normal;
-    }
+.img-outter {
+  display: inline-block;
+}
 
-    .check-small {
-        width: 14px;
-        height: 14px;
-    }*/
+.img-invisibility {
+  visibility: hidden;
+}
+
+/* .check {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  white-space: normal;
+}
+
+.check-small {
+    width: 14px;
+    height: 14px;
+} */
 </style>
 
 <script>

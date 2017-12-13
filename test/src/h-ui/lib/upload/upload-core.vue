@@ -17,43 +17,43 @@
 </template>
 
 <script>
-    export default {
-      props: ['beforeUpload', 'fileList'],
-      methods: {
-        triggerUpload () {
-          this.$refs.upload.click()
-        },
-        clearUpload () {
-          this.$refs.upload.value = ''
-        },
-        getFileList () {
-          return this.$refs.upload.files
-        },
-        fileRead () {
-          if (this.beforeUpload()) {
-            this.$emit('upload', this.getFileList())
-          }
-        },
-      },
-      computed: {
-        fList () {
-          return this.fileList
-        },
-      },
-    }
+export default {
+  props: ['beforeUpload', 'fileList'],
+  methods: {
+    triggerUpload () {
+      this.$refs.upload.click()
+    },
+    clearUpload () {
+      this.$refs.upload.value = ''
+    },
+    getFileList () {
+      return this.$refs.upload.files
+    },
+    fileRead () {
+      if (this.beforeUpload()) {
+        this.$emit('upload', this.getFileList())
+      }
+    },
+  },
+  computed: {
+    fList () {
+      return this.fileList
+    },
+  },
+}
 </script>
 
 <style>
     .upload-outter {
-        margin: 10px 0;
+      margin: 10px 0;
     }
 
     .upload-input {
-        display: none;
+      display: none;
     }
 
     .upload-content {
-        display: block;
-        font-size: 14px;
+      display: block;
+      font-size: 14px;
     }
 </style>

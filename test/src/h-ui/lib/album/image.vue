@@ -10,12 +10,12 @@
 </template>
 
 <style scoped>
-    .outter {
-        display: inline-block;
-        position: relative;
-        width: auto;
-        height: auto;
-    }
+.outter {
+  display: inline-block;
+  position: relative;
+  width: auto;
+  height: auto;
+}
 </style>
 
 <script>

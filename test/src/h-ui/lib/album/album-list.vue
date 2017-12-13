@@ -18,25 +18,24 @@
 </template>
 
 <style scoped>
-  .image-outter {
-    display: inline-block;
-  }
+.image-outter {
+  display: inline-block;
+}
 
-  .check {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    width: 18px;
-    height: 18px;
-    white-space: normal;
-  }
+.check {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  white-space: normal;
+}
 
-  .handle-button-group {
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-  }
-
+.handle-button-group {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
 </style>
 
 <script>
