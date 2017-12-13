@@ -60,110 +60,111 @@
 </style>
 
 <script>
-    import Image from './image';
-    import arrayFunc from '../../../lib/array-func';
+import Image from './image'
 
-    export default {
-        props: {
-            pageSize: {
-                required: true,
-                type: Number,
-            },
-            imgList: {
-                required: true,
-                type: Array,
-            },
-            requiredItems: {
-                type: Array,
-            },
-            model: {
-                type: Array,
-                required: true,
-            },
-            currentPage: {
-                required: true,
-                type: Number,
-            },
-            totalCount: {
-                required: true,
-                type: Number,
-            },
-            // checkSize: {
-            //     type: String,
-            // },
-            // how many images placed in one line
-            lineCount: {
-                type: Number,
-            },
-            lineIndex: {
-                required: true,
-                type: Number,
-            },
-        },
-        components: {
-            'image-info': Image,
-        },
-        data() {
-            return {
-            };
-        },
-        methods: {
-            judgeCheckAll() {
-                const contains = function contains(val, list) {
-                    return -1 !== list.indexOf(val);
-                };
-                // 判断当前行是否全部选中
-                for (let i = 0; i < this.imgIdList.length; i++) {
-                    if (!contains(this.imgIdList[i], this.cModel)) {
-                        return false;
-                    }
-                }
-                return true;
-            },
-            checkAll() {
-                this.$emit('checkChange', {
-                    list: this.imgList,
-                    type: 'add',
-                });
-            },
-            clearAllCheck() {
-                this.$emit('checkChange', {
-                    list: this.imgList,
-                    type: 'remove',
-                });
-            },
-            emitCheck(evt, index) {
-                this.$emit('checkChange', {
-                    list: [this.imgList[index]],
-                    type: this.$refs.checkbox[index].isChecked ? 'remove' : 'add',
-                });
-            },
-        },
-        computed: {
-            contains() {
-                return arrayFunc.contains;
-            },
-            cSize() {
-                switch (this.checkSize) {
-                    default:
-                    case 'normal':
-                        return '';
-                    case 'small':
-                        return 'check-small';
-                }
-            },
-            cModel() {
-                return JSON.parse(JSON.stringify(this.model));
-            },
-            imgIdList() {
-                const list = [];
-                this.imgList.forEach(img => {
-                    if (-1 !== img.imgId) {
-                        list.push(img.imgId);
-                    }
-                });
-                return list;
-            },
-        },
-    };
+export default {
+  props: {
+    pageSize: {
+      required: true,
+      type: Number,
+    },
+    imgList: {
+      required: true,
+      type: Array,
+    },
+    requiredItems: {
+      type: Array,
+    },
+    model: {
+      type: Array,
+      required: true,
+    },
+    currentPage: {
+      required: true,
+      type: Number,
+    },
+    totalCount: {
+      required: true,
+      type: Number,
+    },
+    // checkSize: {
+    //     type: String,
+    // },
+    // how many images placed in one line
+    lineCount: {
+      type: Number,
+    },
+    lineIndex: {
+      required: true,
+      type: Number,
+    },
+  },
+  components: {
+    'image-info': Image,
+  },
+  data () {
+    return {
+    }
+  },
+  methods: {
+    judgeCheckAll () {
+      const contains = function contains (val, list) {
+        return list.indexOf(val) !== -1
+      }
+      // 判断当前行是否全部选中
+      for (let i = 0; i < this.imgIdList.length; i++) {
+        if (!contains(this.imgIdList[i], this.cModel)) {
+          return false
+        }
+      }
+      return true
+    },
+    checkAll () {
+      this.$emit('checkChange', {
+        list: this.imgList,
+        type: 'add',
+      })
+    },
+    clearAllCheck () {
+      this.$emit('checkChange', {
+        list: this.imgList,
+        type: 'remove',
+      })
+    },
+    emitCheck (evt, index) {
+      this.$emit('checkChange', {
+        list: [this.imgList[index]],
+        type: this.$refs.checkbox[index].isChecked ? 'remove' : 'add',
+      })
+    },
+  },
+  computed: {
+    contains () {
+      return (val, list) => {
+        return list.indexOf(val) !== -1
+      }
+    },
+    cSize () {
+      switch (this.checkSize) {
+        default:
+        case 'normal':
+          return ''
+        case 'small':
+          return 'check-small'
+      }
+    },
+    cModel () {
+      return JSON.parse(JSON.stringify(this.model))
+    },
+    imgIdList () {
+      const list = []
+      this.imgList.forEach(img => {
+        if (img.imgId !== -1) {
+          list.push(img.imgId)
+        }
+      })
+      return list
+    },
+  },
+}
 </script>

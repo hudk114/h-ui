@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import albumList from './components/album-list/album-list'
 import upload from './components/upload/upload'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const routes = [
   {
@@ -18,8 +18,8 @@ const routes = [
     path: '/upload',
     component: upload,
   },
-];
+]
 
 export default new VueRouter({
   routes
-});
+})

@@ -1,6 +1,7 @@
 <template>
 <div class="outter">
   <album-line v-for="(imgL, index) in lineList"
+    :key="imgL.imgId"
     :class="lineClass"
     :imgList="imgL"
     :model="cModel"
@@ -30,85 +31,16 @@
     white-space: normal;
   }
 
-  .cover {
-    position: absolute;
-    width: 85px;
-    height: 24px;
-    top: 0;
-    right: 0;
-    background: url('./images/cover.png');
-    border-style: none;
-  }
-
-  .cover:hover {
-    background: url('./images/cover-hover.png');
-    cursor: pointer;
-  }
-
-  .cover-selected {
-    position: absolute;
-    width: 85px;
-    height: 24px;
-    top: 0;
-    right: 0;
-    background: url('./images/cover-selected.png');
-    border-style: none;
-  }
-
   .handle-button-group {
     position: absolute;
     right: 0px;
     bottom: 0px;
   }
 
-  .group-button {
-    float: right;
-    margin-left: 1px;
-    width: 24px;
-    height: 24px;
-    border-style: none;
-  }
-
-  .group-button:hover {
-    cursor: pointer;
-  }
-
-  .del {
-    background: url('./images/dustbin.png') no-repeat center center;
-  }
-
-  .del:hover {
-    background: url('./images/dustbin-hover.png') no-repeat center center;
-  }
-
-  .trans {
-    background: url('./images/trans.png') no-repeat center center;
-  }
-
-  .trans:hover {
-    background: url('./images/trans-hover.png') no-repeat center center;
-  }
-
-  .right {
-    background: url('./images/right.png') no-repeat center center;
-  }
-
-  .right:hover {
-    background: url('./images/right-hover.png') no-repeat center center;
-  }
-
-  .left {
-    background: url('./images/left.png') no-repeat center center;
-  }
-
-  .left:hover {
-    background: url('./images/left-hover.png') no-repeat center center;
-  }
 </style>
 
 <script>
-import AlbumLine from './album-line';
-import arrayFunc from '../../../lib/array-func';
+import AlbumLine from './album-line'
 
 export default {
   props: {
@@ -161,72 +93,69 @@ export default {
   components: {
     'album-line': AlbumLine,
   },
-  data() {
-    return {};
+  data () {
+    return {}
   },
   methods: {
-    checkChangeInner({
+    checkChangeInner ({
       list,
       type
     }) {
       this.$emit('checkChange', {
         type,
         list
-      });
+      })
       // this.checkChange(idList, type, imgList);
     },
-    judgeCheckAll() {
+    judgeCheckAll () {
       // 判断当前页是否全部选中
       for (let i = 0; i < this.$refs.line.length; i++) {
         if (!this.$refs.line[i].judgeCheckAll()) {
-          return false;
+          return false
         }
       }
-      return true;
+      return true
     },
-    checkAll() {
+    checkAll () {
       this.$refs.line.forEach(line => {
-        line.checkAll();
-      });
+        line.checkAll()
+      })
     },
-    clearAllCheck() {
+    clearAllCheck () {
       this.$refs.line.forEach(line => {
-        line.clearAllCheck();
-      });
+        line.clearAllCheck()
+      })
     },
   },
   computed: {
-    arrayFunc() {
-      return arrayFunc;
-    },
-    lineList() {
+    lineList () {
       // 根据imgList，lineCount算出每行的元素并返回
-      const lList = [];
-      let line = [];
+      const lList = []
+      let line = []
       this.imgList.forEach((img, index) => {
-        if (0 !== index && 0 === index % this.lineCount) {
-          lList.push(line);
-          line = [];
+        if (index !== 0 && index % this.lineCount === 0) {
+          lList.push(line)
+          line = []
         }
-        line.push(img);
-      });
-      if (0 < line.length) {
+        line.push(img)
+      })
+      if (line.length > 0) {
         // 补齐
-        const item = JSON.parse(JSON.stringify(this.imgList[0]));
-        item.imgId = -1;
-        while (0 !== line.length % this.lineCount) {
-          line.push(item);
+        const item = JSON.parse(JSON.stringify(this.imgList[0]))
+        item.imgId = -1
+        while (line.length % this.lineCount !== 0) {
+          line.push(item)
         }
-        lList.push(line);
+        lList.push(line)
       }
-      return lList;
+      return lList
     },
-    cSize() {
-      return this.checkSize || 'normal';
+    cSize () {
+      return this.checkSize || 'normal'
     },
-    cModel() {
-      return JSON.parse(JSON.stringify(this.model));
+    cModel () {
+      return JSON.parse(JSON.stringify(this.model))
     },
   },
-};
+}
 </script>

@@ -20,15 +20,15 @@
 
 <script>
     export default {
-        props: ['imgInfo'],
-        data() {
-            return {
-                model: [],
-            };
-        },
-        methods: {
-        },
-        computed: {
-        },
-    };
+      props: ['imgInfo'],
+      data () {
+        return {
+          model: [],
+        }
+  },
+      methods: {
+      },
+      computed: {
+      },
+    }
 </script>

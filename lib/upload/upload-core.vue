@@ -18,29 +18,29 @@
 
 <script>
     export default {
-        props: ['beforeUpload', 'fileList'],
-        methods: {
-            triggerUpload() {
-                this.$refs.upload.click();
-            },
-            clearUpload() {
-                this.$refs.upload.value = '';
-            },
-            getFileList() {
-                return this.$refs.upload.files;
-            },
-            fileRead() {
-                if (this.beforeUpload()) {
-                    this.$emit('upload', this.getFileList());
-                }
-            },
+      props: ['beforeUpload', 'fileList'],
+      methods: {
+        triggerUpload () {
+          this.$refs.upload.click()
         },
-        computed: {
-            fList() {
-                return this.fileList;
-            },
+        clearUpload () {
+          this.$refs.upload.value = ''
         },
-    };
+        getFileList () {
+          return this.$refs.upload.files
+        },
+        fileRead () {
+          if (this.beforeUpload()) {
+            this.$emit('upload', this.getFileList())
+          }
+        },
+      },
+      computed: {
+        fList () {
+          return this.fileList
+        },
+      },
+    }
 </script>
 
 <style>
