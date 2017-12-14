@@ -1,7 +1,9 @@
 <template>
 <div class="outter">
+  test
+  <!-- TODO -->
   <album-line v-for="(imgL, index) in lineList"
-    :key="imgL.imgId"
+    :key="index"
     :class="lineClass"
     :imgList="imgL"
     :model="cModel"
@@ -10,7 +12,7 @@
     :totalCount="totalCount"
     :pageSize="pageSize"
     :requiredItems="requiredItems" 
-    :checkSize="cSize"
+    :checkSize="checkSize"
     :lineCount="lineCount"
     :lineIndex="index" ref="line">
   </album-line>
@@ -18,25 +20,24 @@
 </template>
 
 <style scoped>
-  .image-outter {
-    display: inline-block;
-  }
+.image-outter {
+  display: inline-block;
+}
 
-  .check {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    width: 18px;
-    height: 18px;
-    white-space: normal;
-  }
+.check {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 18px;
+  height: 18px;
+  white-space: normal;
+}
 
-  .handle-button-group {
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-  }
-
+.handle-button-group {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
 </style>
 
 <script>
@@ -54,6 +55,9 @@ export default {
     },
     requiredItems: {
       type: Array,
+      default () {
+        return []
+      },
     },
     model: {
       type: Array,
@@ -67,27 +71,18 @@ export default {
       required: true,
       type: Number,
     },
-    cover: {
-      type: Function,
-    },
-    del: {
-      type: Function,
-    },
-    trans: {
-      type: Function,
-    },
-    direct: {
-      type: Function,
-    },
     checkSize: {
       type: String,
+      default: 'normal'
     },
     // how many images placed in one line
     lineCount: {
       type: Number,
+      required: true,
     },
     lineClass: {
       type: String,
+      default: '',
     },
   },
   components: {
@@ -142,16 +137,13 @@ export default {
       if (line.length > 0) {
         // 补齐
         const item = JSON.parse(JSON.stringify(this.imgList[0]))
-        item.imgId = -1
         while (line.length % this.lineCount !== 0) {
-          line.push(item)
+          item.imgId = -1 * (line.length % this.lineCount)
+          line.push(JSON.parse(JSON.stringify(item)))
         }
         lList.push(line)
       }
       return lList
-    },
-    cSize () {
-      return this.checkSize || 'normal'
     },
     cModel () {
       return JSON.parse(JSON.stringify(this.model))

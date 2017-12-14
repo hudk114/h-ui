@@ -10,25 +10,25 @@
 </template>
 
 <style scoped>
-    .outter {
-        display: inline-block;
-        position: relative;
-        width: auto;
-        height: auto;
-    }
+.outter {
+  display: inline-block;
+  position: relative;
+  width: auto;
+  height: auto;
+}
 </style>
 
 <script>
-    export default {
-      props: ['imgInfo'],
-      data () {
-        return {
-          model: [],
-        }
-  },
-      methods: {
-      },
-      computed: {
-      },
+export default {
+  props: ['imgInfo'],
+  data () {
+    return {
+      model: [],
     }
+  },
+  methods: {
+  },
+  computed: {
+  },
+}
 </script>

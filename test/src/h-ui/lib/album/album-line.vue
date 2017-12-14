@@ -3,17 +3,17 @@
     <div class="line-outter">
         <div v-for="(image, index) in imgList"
             :key="image.imgId"
-            :class="['img-outter', -1 === image.imgId ? 'img-invisibility' : '']">
+            :class="['img-outter', 0 > image.imgId ? 'img-invisibility' : '']">
             <image-info :imgInfo="image">
                 <!-- TODO 恶心 -->
-                <!-- <el-checkbox v-if="contains('check', requiredItems)"
+                <el-checkbox v-if="contains('check', requiredItems)"
                     :class="['check', cSize? cSize: '']"
                     slot="image"
                     v-model="cModel"
                     ref="checkbox"
                     @change="emitCheck($event, index)"
                     :label="image.imgId">{{ '' }}
-                </el-checkbox> -->
+                </el-checkbox>
             </image-info>
         </div>
     </div>

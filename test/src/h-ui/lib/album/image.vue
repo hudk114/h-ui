@@ -19,16 +19,16 @@
 </style>
 
 <script>
-    export default {
-      props: ['imgInfo'],
-      data () {
-        return {
-          model: [],
-        }
-  },
-      methods: {
-      },
-      computed: {
-      },
+export default {
+  props: ['imgInfo'],
+  data () {
+    return {
+      model: [],
     }
+  },
+  methods: {
+  },
+  computed: {
+  },
+}
 </script>
