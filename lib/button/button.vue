@@ -1,7 +1,6 @@
 <template>
   <button :disabled="disabled"
     :class="[
-      _c,
       'h__button',
       type ? 'h__button-' + type : '',
       disabled ? 'h__button-disabled' : ''
@@ -95,20 +94,10 @@ export default {
       default: 'positive'
     },
     disabled: Boolean,
-    class: {
-      type: String,
-      default: ''
-    }
   },
   methods: {
     click() {
       this.$emit('click');
-    }
-  },
-  computed: {
-    _c () {
-      // class is keyword that can't be used in prop
-      return this['class'];
     }
   }
 };

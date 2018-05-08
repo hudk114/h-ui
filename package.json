@@ -23,5 +23,18 @@
   "bugs": {
     "url": "https://github.com/hudk114/h-ui/issues"
   },
-  "homepage": "https://github.com/hudk114/h-ui#readme"
+  "homepage": "https://github.com/hudk114/h-ui#readme",
+  "dependencies": {
+    "vue": "^2.4.4"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "css-loader": "^0.28.7",
+    "element-ui": "^2.3.7",
+    "file-loader": "^1.1.4",
+    "vue-loader": "^13.7.1",
+    "vue-style-loader": "^4.1.0",
+    "vue-template-compiler": "^2.4.4"
+  }
 }

@@ -11,6 +11,7 @@
     "eslint": "eslint src src/**/*.vue"
   },
   "dependencies": {
+    "element-ui": "^2.3.7",
     "vue": "^2.4.4",
     "vue-router": "^3.0.1"
   },
@@ -30,7 +31,8 @@
     "stylelint": "^8.3.1",
     "stylelint-config-standard": "^18.0.0",
     "stylelint-processor-html": "^1.0.0",
-    "vue-loader": "^13.0.5",
+    "vue-loader": "^13.7.1",
+    "vue-style-loader": "^4.1.0",
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"

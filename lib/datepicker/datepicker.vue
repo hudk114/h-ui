@@ -1,5 +1,5 @@
 <template>
-  <div class="h__datepicker outter">
+  <div class="h__datepicker-wrapper">
     <el-date-picker
       @input="handleInput"
       v-model="tModel"
@@ -9,19 +9,19 @@
       :disabled="disabled"
       :picker-options="pickerOptions">
     </el-date-picker>
-    <div class="clear-replace"
+    <div class="h__datepicker-clear-replace"
       @click="handleClear">
     </div>
   </div>
 </template>
 
-<style scoped>
-.outter {
+<style>
+.h__datepicker-wrapper {
   display: inline-block;
   position: relative;
 }
 
-.clear-replace {
+.h__datepicker-clear-replace {
   width: 34px;
   height: 34px;
   line-height: 34px;
@@ -51,6 +51,9 @@
 </style>
 
 <script>
+/**
+ * for element 1.0, which date picker has several bugs
+ */
 export default {
   props: {
     model: {
@@ -72,26 +75,20 @@ export default {
     },
     pickerOptions: {
       type: Object,
-      default: () => {
-        return {};
-      }
+      default: () => {}
     }
-  },
-  data() {
-    return {};
   },
   methods: {
     handleInput (val) {
-      const convert = date => {
-        return date ? Date.parse(new Date(date)) : '';
-      };
+      const convert = date => date ? Date.parse(new Date(date)) : '';
 
       // if type is daterange
-      if (Array.isArray(val)) {
-        this.$emit('change', val.map(convert));
-      } else {
-        this.$emit('change', convert(val));
-      }
+      this.$emit(
+        'change',
+        Array.isArray(val) ?
+          val.map(convert) : // type is daterange
+          convert(val)
+      );
     },
     handleClear () {
       this.$emit('clear');
