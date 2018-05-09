@@ -1,43 +1,43 @@
 <template>
-  <h-table
+  <h-table-inner
     :data="data"
     :column="fixedColumn"
     :border="border"
     :stripe="stripe"
     @selection-change="handleSelect">
-    <!-- 上层slot传入下层 -->
-    <!-- 渲染的时候会造成多次slot渲染，因为element底层问题，一个el-table-column生成了多个div -->
     <template
-      v-for="item in inlineColumn"
+      v-for="item in slotColumn"
       :slot="item.label">
       <slot :name="item.label"></slot>
     </template>
-    <el-table-column
-      v-for="(item, index) in editColumn"
-      :key="index"
-      inline-template
+    <el-table-column v-for="(item, index) in editColumn"
+      :key="index + '0'"
       align="center"
-      :context="_self"
       :width="item.width"
       :label="item.label"
       :slot="item.label"
       :fixed="item.fixed">
-      <span>
-        <h-button
-          class="h__table-button"
+      <template slot-scope="scope">
+        <h-button class="ui__table-button"
           v-for="(button, i) in item.column"
-          :key="i"
+          :key="i + '0'"
           type="table"
-          @click="button.callback(row, $index)">
+          @click="button.callback(scope.row, scope.$index)">
           {{ button.name || button.judgeName(row) }}
         </h-button>
-      </span>
+      </template>
     </el-table-column>
-  </h-table>
+  </h-table-inner>
 </template>
 
 <script>
+import TableI from './table-inner2.0';
+
 export default {
+  name: 'h-table',
+  components: {
+    'h-table-inner': TableI
+  },
   props: {
     data: {
       type: Array,
@@ -57,15 +57,15 @@ export default {
     }
   },
   computed: {
-    editColumn () {
+    editColumn() {
       return this.column.filter(item => item.edit);
     },
-    inlineColumn () {
-      return this.column.filter(item => item.inline);
+    slotColumn() {
+      return this.column.filter(item => item.slot);
     },
-    fixedColumn () {
+    fixedColumn() {
       return this.column.map(item => {
-        if (!(item.edit || item.inline)) {
+        if (!(item.edit || item.slot)) {
           return item;
         }
         return {
@@ -76,7 +76,7 @@ export default {
     }
   },
   methods: {
-    handleSelect (selection) {
+    handleSelect(selection) {
       this.$emit('selection-change', selection);
     }
   }
@@ -84,11 +84,11 @@ export default {
 </script>
 
 <style>
-  .h__table-button {
-    margin-left: 10px;
-  }
+.ui__table-button {
+  margin-left: 10px;
+}
 
-  .h__table-button:first-child {
-    margin-left: 0;
-  }
+.ui__table-button:first-child {
+  margin-left: 0;
+}
 </style>

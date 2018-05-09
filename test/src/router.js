@@ -5,6 +5,7 @@ import upload from './components/upload/upload'
 import button from './pages/button'
 import datepicker from './pages/datepicker'
 import dialog from './pages/dialog'
+import table from './pages/table'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,10 @@ const routes = [
   {
     path: '/dialog',
     component: dialog,
+  },
+  {
+    path: '/table',
+    component: table,
   }
 ];
 

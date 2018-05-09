@@ -3,7 +3,7 @@
     :data="data"
     :stripe="stripe"
     :border="border"
-    class="h__table"
+    class="ui__table"
     @selection-change="handleSelect">
     <template
       v-for="(item, index) in column">
@@ -28,14 +28,6 @@
         </el-table-column>
         <slot :name="item.name" v-else></slot>
       </template>
-      <!-- <el-table-column
-        v-else
-        inline-template
-        :context="$parent"
-        :key="index"
-        :label="item.label">
-        <slot name="edit"></slot>
-      </el-table-column> -->
     </template>
   </el-table>
 </template>
@@ -69,8 +61,8 @@ export default {
 </script>
 
 <style>
-.h__table .el-table__fixed-header-wrapper .el-table__header .cell,
-.h__table .el-table__header-wrapper .el-table__header .cell {
+.ui__table .el-table__fixed-header-wrapper .el-table__header .cell,
+.ui__table .el-table__header-wrapper .el-table__header .cell {
   text-align: center;
 }
 </style>
