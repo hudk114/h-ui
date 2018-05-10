@@ -69,6 +69,13 @@ export default {
             {
               name: '编辑',
               callback: this.handleEdit
+            },
+            {
+              judgeName (row) {
+                console.log(row)
+                return row.score > 60 ? '及格了' : '要补考';
+              },
+              callback: this.handleEdit
             }
           ],
           label: '操作'

@@ -23,7 +23,7 @@
           :key="i + '0'"
           type="table"
           @click="button.callback(scope.row, scope.$index)">
-          {{ button.name || button.judgeName(row) }}
+          {{ button.name || button.judgeName(scope.row) }}
         </h-button>
       </template>
     </el-table-column>
